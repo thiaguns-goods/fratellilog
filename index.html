@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#050505">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Fratelli Logistics</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Cinzel:wght@700;900&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27c22",
+                        "primary-dark": "#b35612",
+                        "background-dark": "#050505",
+                        "surface-dark": "#0f0f0f",
+                        "border-dark": "#1f1f1f",
+                        "text-secondary-dark": "#888888",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Cinzel", "serif"],
+                        "western": ["'Special Elite'", "cursive"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #050505; 
+            color: white; 
+            -webkit-font-smoothing: antialiased;
+            overscroll-behavior-y: contain; /* Previne o "puxar para atualizar" que atrapalha o app */
+        }
+        .logo-gradient { fill: url(#fratelli-grad); }
+        .text-gradient {
+            background: linear-gradient(180deg, #f27c22 0%, #b35612 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fratelli-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: -0.05em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .western-vibe {
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 0.05em;
+        }
+        /* Ajuste para iPhones com notch */
+        .pb-safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .pt-safe-top {
+            padding-top: env(safe-area-inset-top);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background-dark">
+    <div id="root"></div>
+    <svg width="0" height="0" class="absolute">
+      <defs>
+        <linearGradient id="fratelli-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#f27c22;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#b35612;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

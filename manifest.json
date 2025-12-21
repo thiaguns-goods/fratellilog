@@ -1,0 +1,16 @@
+
+{
+  "name": "Fratelli Logistics",
+  "short_name": "Fratelli",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#f27c22",
+  "icons": [
+    {
+      "src": "https://fonts.gstatic.com/s/i/shortterm/release/googlesymbols/local_shipping/default/48px.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}

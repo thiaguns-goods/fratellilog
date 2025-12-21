@@ -1,0 +1,7 @@
+{
+  "name": "Fratelli Logistics",
+  "description": "Plataforma inteligente de logística para a Cervejaria Fratelli Reggiani, com otimização de rotas e processamento de pedidos via IA.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
