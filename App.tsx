@@ -8,23 +8,7 @@ import SettingsView from './components/SettingsView';
 import MapView from './components/MapView';
 import HomeView from './components/HomeView';
 
-const INITIAL_DELIVERIES: Delivery[] = [
-  {
-    id: '1',
-    orderNumber: '1024',
-    clientName: 'Bar do Zé - Centro',
-    address: 'Av. Paulista, 1000, São Paulo - SP',
-    phone: '5511998887766',
-    timeWindow: '14:00 - 16:00',
-    installTime: 20,
-    status: DeliveryStatus.PENDING,
-    createdAt: '2023-10-12T09:45:00',
-    items: [
-      { id: 'i1', name: 'Pilsen 50L', type: 'Barril Aço Inox', quantity: 2 },
-      { id: 'i2', name: 'IPA 30L', type: 'Barril Slim', quantity: 1 }
-    ]
-  }
-];
+const INITIAL_DELIVERIES: Delivery[] = [];
 
 const INITIAL_SETTINGS: Settings = {
   breweryName: 'Fratelli Reggiani',
@@ -40,12 +24,20 @@ const INITIAL_SETTINGS: Settings = {
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('HOME');
   const [deliveries, setDeliveries] = useState<Delivery[]>(() => {
-    const saved = localStorage.getItem('deliveries');
-    return saved ? JSON.parse(saved) : INITIAL_DELIVERIES;
+    try {
+      const saved = localStorage.getItem('deliveries');
+      return saved ? JSON.parse(saved) : INITIAL_DELIVERIES;
+    } catch {
+      return INITIAL_DELIVERIES;
+    }
   });
   const [settings, setSettings] = useState<Settings>(() => {
-    const saved = localStorage.getItem('settings');
-    return saved ? JSON.parse(saved) : INITIAL_SETTINGS;
+    try {
+      const saved = localStorage.getItem('settings');
+      return saved ? JSON.parse(saved) : INITIAL_SETTINGS;
+    } catch {
+      return INITIAL_SETTINGS;
+    }
   });
   const [selectedDeliveryId, setSelectedDeliveryId] = useState<string | null>(null);
 
@@ -81,31 +73,31 @@ const App: React.FC = () => {
   const selectedDelivery = deliveries.find(d => d.id === selectedDeliveryId);
 
   const renderNav = () => (
-    <nav className="fixed bottom-0 w-full z-30 bg-white/90 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-white/5 pb-safe-bottom max-w-md mx-auto left-0 right-0">
+    <nav className="fixed bottom-0 w-full z-30 bg-background-dark/95 backdrop-blur-lg border-t border-white/5 pb-safe-bottom max-w-md mx-auto left-0 right-0">
       <div className="flex justify-around items-center h-16">
-        <button onClick={() => setView('HOME')} className={`flex flex-col items-center justify-center w-full h-full ${view === 'HOME' ? 'text-primary' : 'text-slate-400'}`}>
+        <button onClick={() => setView('HOME')} className={`flex flex-col items-center justify-center w-full h-full transition-colors ${view === 'HOME' ? 'text-primary' : 'text-white/20'}`}>
           <span className="material-symbols-outlined text-[24px]">dashboard</span>
-          <span className="text-[10px] font-medium">Início</span>
+          <span className="text-[10px] font-black uppercase tracking-widest mt-1">Início</span>
         </button>
-        <button onClick={() => setView('LIST')} className={`flex flex-col items-center justify-center w-full h-full ${view === 'LIST' ? 'text-primary' : 'text-slate-400'}`}>
+        <button onClick={() => setView('LIST')} className={`flex flex-col items-center justify-center w-full h-full transition-colors ${view === 'LIST' ? 'text-primary' : 'text-white/20'}`}>
           <span className="material-symbols-outlined text-[24px]">local_shipping</span>
-          <span className="text-[10px] font-medium">Entregas</span>
+          <span className="text-[10px] font-black uppercase tracking-widest mt-1">Entregas</span>
         </button>
-        <button onClick={() => setView('MAP')} className={`flex flex-col items-center justify-center w-full h-full ${view === 'MAP' ? 'text-primary' : 'text-slate-400'}`}>
+        <button onClick={() => setView('MAP')} className={`flex flex-col items-center justify-center w-full h-full transition-colors ${view === 'MAP' ? 'text-primary' : 'text-white/20'}`}>
           <span className="material-symbols-outlined text-[24px]">map</span>
-          <span className="text-[10px] font-medium">Otimizar</span>
+          <span className="text-[10px] font-black uppercase tracking-widest mt-1">Rota</span>
         </button>
-        <button onClick={() => setView('SETTINGS')} className={`flex flex-col items-center justify-center w-full h-full ${view === 'SETTINGS' ? 'text-primary' : 'text-slate-400'}`}>
-          <span className="material-symbols-outlined text-[24px]">person</span>
-          <span className="text-[10px] font-medium">Perfil</span>
+        <button onClick={() => setView('SETTINGS')} className={`flex flex-col items-center justify-center w-full h-full transition-colors ${view === 'SETTINGS' ? 'text-primary' : 'text-white/20'}`}>
+          <span className="material-symbols-outlined text-[24px]">settings</span>
+          <span className="text-[10px] font-black uppercase tracking-widest mt-1">Ajustes</span>
         </button>
       </div>
     </nav>
   );
 
   return (
-    <div className="flex flex-col min-h-screen w-full max-w-md mx-auto overflow-hidden shadow-2xl bg-background-light dark:bg-background-dark relative border-x border-black/5 dark:border-white/5">
-      <div className="flex-1 pb-16">
+    <div className="flex flex-col min-h-screen w-full max-w-md mx-auto overflow-hidden bg-background-dark relative shadow-2xl">
+      <div className="flex-1">
         {view === 'HOME' && <HomeView onStartImport={() => setView('IMPORT')} deliveries={deliveries} />}
         
         {view === 'LIST' && (

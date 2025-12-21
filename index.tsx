@@ -3,12 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
+// Inicialização segura do DOM
+const container = document.getElementById('root');
+
+if (!container) {
+  throw new Error("Falha ao encontrar o elemento raiz 'root' no index.html. Verifique a estrutura do DOM.");
 }
 
-const root = ReactDOM.createRoot(rootElement);
+const root = ReactDOM.createRoot(container);
+
 root.render(
   <React.StrictMode>
     <App />
