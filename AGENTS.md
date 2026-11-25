@@ -13,3 +13,20 @@ Quando a tarefa exigir acesso ao **computador Windows/WSL autorizado**, agentes 
 - Preservar todas as regras especificas do projeto, fontes de verdade, revisoes, seguranca, testes e politica de deploy. Este arquivo nao autoriza deploys nem substitui governanca.
 
 Nexus e o **transporte remoto preferencial**, nao uma fonte de verdade nem permissao adicional. Politica adotada em 13/10/2026. Referencia: `thiaguns-goods/nexus-remote-shell`.
+
+---
+
+<!-- NEXUS_GOAL_UNIVERSAL_V1_START -->
+## NEXUS GOAL — Execução autônoma supervisionada (padrão 25/11/2026)
+
+Aplicar o [protocolo universal](https://github.com/thiaguns-goods/nexus-knowledge/blob/main/NEXUS-GOAL-PROTOCOL.md) **somente ao objetivo/issue aprovado e às capacidades reais do agente**. As regras específicas deste repositório e as restrições de segurança prevalecem; isto não concede novas permissões, não ativa automações e não reabre projetos encerrados.
+
+- **Retomar com evidências:** conferir issue, PR, branch/HEAD, testes, alterações locais, worktrees, checkpoints e concorrência; não repetir trabalho já comprovado.
+- **Executar até o resultado verificável:** investigar → planejar → implementar (se autorizado) → testar → corrigir → validar integração → registrar; Superpowers/TDD quando disponíveis e pertinentes.
+- **Sem microconfirmações:** avançar em blocos completos dentro do mandato existente, sem exigir “continue”; escalar apenas bloqueio real, risco ou decisão fora do escopo.
+- **Persistência:** preservar e documentar trabalho local não publicado, decisões, diffs, testes e próximo passo; nunca apagar dados, worktrees ou histórico de outros agentes.
+- **Verdades separadas:** VERIFICADO AGORA / HISTÓRICO / SIMULADO / PENDENTE / BLOQUEADO; SKIP, HOLD e testes sintéticos não comprovam E2E produtivo.
+- **Proteção:** sem gasto, merge/deploy sensível, mudança produtiva, ação financeira/destrutiva, secrets ou ampliação de grants sem gates e autorização próprios; nenhum segundo executor/worker/scheduler.
+- **Limite da função:** agentes read-only continuam read-only; este texto não faz a sessão trabalhar em background. O coordenador global é o chat central 03 — Nexus AI Lab.
+
+<!-- NEXUS_GOAL_UNIVERSAL_V1_END -->
